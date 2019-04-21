@@ -45,7 +45,6 @@ router.get('/:id', function (req, res) {
     });
 });
 router.get('/', function (req, res) {
-    console.log(dataTools.validate(req.query));
     var filterExpression = 'visible = :visible';
     var expressionAttributeValues = {
         ':visible': true,

@@ -26,7 +26,7 @@ npm install -g yarn
 Grab the github repo and clone it into your local project folder
 
 ```bash
-git clone <git_url>.git
+git clone git@github.com:heinzster/cluno.git
 ```
 
 ## Code Linter (TSLint)
@@ -38,7 +38,7 @@ yarn run lint
 
 ## Setup DynamoDB locally
 
-See AWS documentation for installation details:
+See AWS documentation for DynamoDB installation details:
 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html
 
 
@@ -50,19 +50,22 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
 
 ## Create Items table
 
-Run the following command to create the Items database:
+Run the following command to create the Items table:
 ```bash
 yarn create_db
 ```
 
 ## Load Cluno data into Items table
 
-Run the following command to create the Items database:
+Run the following command to load sample Cluno data into Items table:
 ```bash
 yarn load_data
 ```
 
 ## Verify database contents
+
+See AWS documentation for aws-cli installation details:
+https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
 
 Use aws-cli to verify that loading of data was successful:
 ```bash
@@ -87,7 +90,7 @@ $ yarn run build && yarn run start # Production mode
 All list operations display up to 10 items per request
 You can use the REST app from any standard browser or use cURL command from linux console.
 
-To make the results more readable, it is recommended to use any browser plug-in/extension for JSON parsing.
+To make the results more readable, it is recommended to use a browser plug-in/extension for JSON parsing.
 
 ```
 curl http://localhost:3000/
@@ -127,3 +130,8 @@ curl http://localhost:3000/179
 curl http://localhost:3000/180
 curl http://localhost:3000/129
 ```
+
+## Helpful references
+
+https://medium.com/quick-code/node-js-restful-api-with-dynamodb-local-7e342a934a24
+https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
