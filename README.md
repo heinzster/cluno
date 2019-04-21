@@ -57,6 +57,9 @@ yarn create_db
 
 ## Load Cluno data into Items table
 
+Original data file can be found here:
+https://assets.cluno.com/offer/dynamodb.export.json
+
 Run the following command to load sample Cluno data into Items table:
 ```bash
 yarn load_data
@@ -87,7 +90,7 @@ $ yarn run build && yarn run start # Production mode
 
 ### View list of offers
 
-All list operations display up to 10 items per request
+All list operations display up to 10 items per request and are sorted by price.
 You can use the REST app from any standard browser or use cURL command from linux console.
 
 To make the results more readable, it is recommended to use a browser plug-in/extension for JSON parsing.

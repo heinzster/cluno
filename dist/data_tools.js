@@ -31,5 +31,5 @@ exports.filter = function(data, query) {
     filtered_results = filtered_results.filter(item => item.pricing.price < parseFloat(query.max_price));
   }
 
-  return filtered_results;
+  return filtered_results.sort((a, b) => (a.pricing.price > b.pricing.price) ? 1 : -1)
 }
