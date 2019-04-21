@@ -1,0 +1,17 @@
+#!/bin/bash
+BUILD_NUMBER="${BUILD_NUMBER:-latest}"
+export PROJECT_NAME="proxy_test_interface_nodejs"
+export IMAGE_NAME="858049876441.dkr.ecr.eu-west-1.amazonaws.com/$PROJECT_NAME"
+export CURRENT_IMAGE_NAME="$IMAGE_NAME:$BUILD_NUMBER"
+export COMMIT_ID="$(git rev-parse HEAD)"
+
+cache_tag="$(git describe --abbrev=0 --tags `git rev-list HEAD --skip=1 --max-count=1 2>/dev/null` 2>/dev/null)"
+if [ $? -eq 0 ]; then
+  docker pull "$IMAGE_NAME:$cache_tag"
+fi
+
+set -e
+
+docker build -t "$CURRENT_IMAGE_NAME" .
+docker run --rm "$CURRENT_IMAGE_NAME" yarn run test --color
+docker run --rm "$CURRENT_IMAGE_NAME" yarn run lint
